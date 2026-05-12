@@ -5,7 +5,7 @@
 
 ## 2. Fun hover and focus implementation
 
-- [ ] 2.1 In `css/style.css`, add the new fun interaction styles to `.btn:hover` (e.g., playful transform/visual accent) so every `.btn` receives the same hover effect.
+- [x] 2.1 In `css/style.css`, add the new fun interaction styles to `.btn:hover` (e.g., playful transform/visual accent) so every `.btn` receives the same hover effect.
 - [ ] 2.2 In `css/style.css`, add matching `.btn:focus-visible` styles so keyboard users get an interaction cue with comparable prominence.
 - [ ] 2.3 In `css/style.css`, add an `@media (prefers-reduced-motion: reduce)` override for `.btn` interaction states to remove or minimize motion while keeping a visible state change.
 

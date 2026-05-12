@@ -128,9 +128,18 @@ h2 {
   font-weight: 600;
   cursor: pointer;
   text-decoration: none;
+  transition:
+    background-color 180ms ease,
+    transform 180ms ease,
+    box-shadow 180ms ease;
 }
 
-.btn:hover,
+.btn:hover {
+  transform: translateY(-2px) rotate(-1deg);
+  box-shadow: 0 10px 18px hsl(28, 90%, 24%, 0.28);
+  background-color: hsl(28, 90%, 32%);
+}
+
 .btn:focus-visible {
   background-color: hsl(28, 90%, 32%);
 }
