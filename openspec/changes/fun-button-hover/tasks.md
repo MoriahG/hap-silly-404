@@ -1,6 +1,6 @@
 ## 1. Button selector unification
 
-- [ ] 1.1 In `index.html` and `404.html`, ensure every interactive button-style control uses the shared `.btn` class so one style rule can target all of them.
+- [x] 1.1 In `index.html` and `404.html`, ensure every interactive button-style control uses the shared `.btn` class so one style rule can target all of them.
 - [ ] 1.2 In `css/style.css`, confirm `.btn` remains the canonical shared button selector and move any duplicate base button declarations from page-specific files into this shared rule.
 
 ## 2. Fun hover and focus implementation
