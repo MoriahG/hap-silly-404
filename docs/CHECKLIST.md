@@ -70,15 +70,15 @@ updated: 2026-04-18
 
 ## Track 1 — front-end feature (Part 4B)
 
-- [ ] `openspec new change <your-feature-slug>` run
-- [ ] `propose <your-feature-slug>` run in Copilot CLI (AGENTS.md rule)
-- [ ] Artifacts reviewed and edited
-- [ ] `openspec validate <your-feature-slug>` passes
-- [ ] `apply <your-feature-slug>` — one task at a time, committed between each
-- [ ] `openspec archive <your-feature-slug> --yes` run
-- [ ] `npm run check` passes
-- [ ] Any permanent constraints added to `AGENTS.md`
-- [ ] Committed: `git commit -m "Part 4B: <your-feature-slug> implemented and archived"`
+- [x] `openspec new change <your-feature-slug>` run
+- [x] `propose <your-feature-slug>` run in Copilot CLI (AGENTS.md rule)
+- [x] Artifacts reviewed and edited
+- [x] `openspec validate <your-feature-slug>` passes
+- [x] `apply <your-feature-slug>` — one task at a time, committed between each
+- [x] `openspec archive <your-feature-slug> --yes` run
+- [x] `npm run check` passes
+- [x] Any permanent constraints added to `AGENTS.md`
+- [x] Committed: `git commit -m "Part 4B: <your-feature-slug> implemented and archived"`
 
 ## Track 2 — back-end security feature
 
