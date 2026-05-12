@@ -141,7 +141,11 @@ h2 {
 }
 
 .btn:focus-visible {
+  transform: translateY(-2px) rotate(-1deg);
+  box-shadow: 0 10px 18px hsl(28, 90%, 24%, 0.28);
   background-color: hsl(28, 90%, 32%);
+  outline: 3px solid var(--hap-teal);
+  outline-offset: 2px;
 }
 
 .btn-secondary {
