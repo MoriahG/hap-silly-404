@@ -13,4 +13,4 @@
 
 - [x] 3.1 In `css/404.css`, remove or adjust any button hover/focus overrides that conflict with the shared `.btn` interaction styles.
 - [x] 3.2 Verify behavior on `index.html` and `404.html`: pointer hover triggers the fun effect, keyboard focus shows equivalent emphasis, and reduced-motion preference uses the reduced-motion variant.
-- [ ] 3.3 Run `npm run check` and fix any lint/format/secretlint issues caused by the style changes.
+- [x] 3.3 Run `npm run check` and fix any lint/format/secretlint issues caused by the style changes.
