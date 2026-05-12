@@ -157,6 +157,18 @@ h2 {
   background-color: hsl(30, 30%, 24%);
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .btn {
+    transition: background-color 180ms ease;
+  }
+
+  .btn:hover,
+  .btn:focus-visible {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
 /* Figure / image */
 
 .reveal-figure {
