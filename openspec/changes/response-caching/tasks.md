@@ -12,7 +12,7 @@
 
 ## 4. Preserve fallback and security behavior
 
-- [ ] 4.1 Keep existing fallback branches unchanged and ensure fallback text is never cached as a successful response.
+- [x] 4.1 Keep existing fallback branches unchanged and ensure fallback text is never cached as a successful response.
 
 ## 5. Verification
 
