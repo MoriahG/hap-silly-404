@@ -8,7 +8,7 @@
 
 ## 3. Handler integration at the correct step
 
-- [ ] 3.1 Integrate cache lookup/store only in Step 6 flow (after Step 5 API key check), without changing Steps 1-5 behavior.
+- [x] 3.1 Integrate cache lookup/store only in Step 6 flow (after Step 5 API key check), without changing Steps 1-5 behavior.
 
 ## 4. Preserve fallback and security behavior
 

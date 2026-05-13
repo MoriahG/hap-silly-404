@@ -50,6 +50,18 @@ export const config = {
   },
 };
 
+/**
+ * Default in-memory cache TTL for successful Groq responses.
+ * @type {number}
+ */
+const DEFAULT_INSULT_CACHE_TTL_MS = 10_000;
+
+/**
+ * Best-effort in-memory cache for successful roast responses.
+ * @type {Map<string, InsultCacheEntry>}
+ */
+const insultCache = new Map();
+
 /*
  * getConfig() reads environment variables at call time, not at module load.
  *
@@ -108,7 +120,7 @@ function getConfig() {
  */
 export function makeCacheKey(request) {
   const url = new URL(request.url);
-  return `${request.method}:${url.pathname}`;
+  return `${request.method}:${url.pathname}${url.search}`;
 }
 
 /**
@@ -232,6 +244,22 @@ export default async function handler(request) {
     });
   }
 
+  const cacheKey = makeCacheKey(request);
+  const nowMs = Date.now();
+  const configuredTtlMs = Number(process.env.INSULT_CACHE_TTL_MS);
+  const cacheTtlMs =
+    Number.isFinite(configuredTtlMs) && configuredTtlMs > 0
+      ? configuredTtlMs
+      : DEFAULT_INSULT_CACHE_TTL_MS;
+  const cachedInsult = readCachedInsult(insultCache, cacheKey, nowMs);
+
+  if (cachedInsult) {
+    return new Response(JSON.stringify({ insult: cachedInsult, source: "groq" }), {
+      status: 200,
+      headers: corsHeaders,
+    });
+  }
+
   /* Vary the prompt angle so consecutive roasts feel different. */
   const ANGLES = [
     "blame their typing skills",
@@ -315,6 +343,8 @@ export default async function handler(request) {
         headers: corsHeaders,
       });
     }
+
+    writeCachedInsult(insultCache, cacheKey, insult, Date.now(), cacheTtlMs);
 
     return new Response(JSON.stringify({ insult, source: "groq" }), {
       status: 200,

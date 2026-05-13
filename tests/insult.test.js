@@ -31,7 +31,7 @@ describe("insult handler", () => {
       throw new Error("fetch should not run for forbidden requests");
     };
 
-    const req = new Request("http://localhost/.netlify/functions/insult", {
+    const req = new Request("http://localhost/.netlify/functions/insult?scenario=origin", {
       headers: { origin: "https://evil.example" },
     });
     const cacheKey = makeCacheKey(req);
@@ -47,7 +47,7 @@ describe("insult handler", () => {
       throw new Error("fetch should not run when API key is missing");
     };
 
-    const req = new Request("http://localhost/.netlify/functions/insult", {
+    const req = new Request("http://localhost/.netlify/functions/insult?scenario=missing-key", {
       headers: { origin: "http://localhost:8888" },
     });
     const cacheKey = makeCacheKey(req);
@@ -80,7 +80,7 @@ describe("insult handler", () => {
       return response;
     };
 
-    const req = new Request("http://localhost/.netlify/functions/insult", {
+    const req = new Request("http://localhost/.netlify/functions/insult?scenario=cache-hit", {
       headers: { origin: "http://localhost:8888" },
     });
 
@@ -127,7 +127,7 @@ describe("insult handler", () => {
       return response;
     };
 
-    const req = new Request("http://localhost/.netlify/functions/insult", {
+    const req = new Request("http://localhost/.netlify/functions/insult?scenario=expiry", {
       headers: { origin: "http://localhost:8888" },
     });
 
@@ -165,7 +165,7 @@ describe("insult handler", () => {
       return response;
     };
 
-    const req = new Request("http://localhost/.netlify/functions/insult", {
+    const req = new Request("http://localhost/.netlify/functions/insult?scenario=fallback", {
       headers: { origin: "http://localhost:8888" },
     });
 
