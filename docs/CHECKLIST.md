@@ -82,9 +82,9 @@ updated: 2026-04-18
 
 ## Track 2 — back-end security feature
 
-- [ ] `openspec new change <your-security-feature-slug>` run
-- [ ] `propose <your-security-feature-slug>` run; scenarios verified as testable
-- [ ] `openspec validate <your-security-feature-slug>` passes
+- [x] `openspec new change <your-security-feature-slug>` run
+- [x] `propose <your-security-feature-slug>` run; scenarios verified as testable
+- [x] `openspec validate <your-security-feature-slug>` passes
 - [ ] Tests written before implementation (TDD) — red-first, green after
 - [ ] `apply <your-security-feature-slug>` — one task at a time
 - [ ] `openspec archive <your-security-feature-slug> --yes` run
