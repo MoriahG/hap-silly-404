@@ -85,13 +85,13 @@ updated: 2026-04-18
 - [x] `openspec new change <your-security-feature-slug>` run
 - [x] `propose <your-security-feature-slug>` run; scenarios verified as testable
 - [x] `openspec validate <your-security-feature-slug>` passes
-- [ ] Tests written before implementation (TDD) — red-first, green after
-- [ ] `apply <your-security-feature-slug>` — one task at a time
-- [ ] `openspec archive <your-security-feature-slug> --yes` run
-- [ ] `npm test` passes
-- [ ] `npm run check` passes
-- [ ] Any permanent constraints added to `AGENTS.md`
-- [ ] Committed: `git commit -m "Part 5: <your-security-feature-slug> implemented and archived"`
+- [x] Tests written before implementation (TDD) — red-first, green after
+- [x] `apply <your-security-feature-slug>` — one task at a time
+- [x] `openspec archive <your-security-feature-slug> --yes` run
+- [x] `npm test` passes
+- [x] `npm run check` passes
+- [x] Any permanent constraints added to `AGENTS.md`
+- [x] Committed: `git commit -m "Part 5: <your-security-feature-slug> implemented and archived"`
 
 ## Submit
 

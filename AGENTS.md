@@ -165,6 +165,12 @@ Effective rule wording patterns:
 
 When you complete a spec and implement a feature, look at what constraints were in the spec's "out of scope" section. If any of those constraints should apply permanently — not just to this feature — add them here as rules.
 
+### Rules
+
+- Always run Prettier fixes after completing all code changes, incluing the task checkbox check, for the current apply task
+
+- Always use a uniform commit-title format for apply tasks: "Part 5: Complete task <task-number> add <short-task-summary>".
+
 ---
 
 ## Teaching posture
