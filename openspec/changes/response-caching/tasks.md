@@ -4,7 +4,7 @@
 
 ## 2. Testable cache helper functions
 
-- [ ] 2.1 Add JSDoc-documented helpers in `netlify/functions/insult.mjs`: `makeCacheKey(request)`, `isCacheEntryFresh(entry, nowMs)`, `readCachedInsult(cache, key, nowMs)`, and `writeCachedInsult(cache, key, insult, nowMs, ttlMs)`.
+- [x] 2.1 Add JSDoc-documented helpers in `netlify/functions/insult.mjs`: `makeCacheKey(request)`, `isCacheEntryFresh(entry, nowMs)`, `readCachedInsult(cache, key, nowMs)`, and `writeCachedInsult(cache, key, insult, nowMs, ttlMs)`.
 
 ## 3. Handler integration at the correct step
 

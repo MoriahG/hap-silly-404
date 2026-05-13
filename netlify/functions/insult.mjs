@@ -95,6 +95,76 @@ function getConfig() {
 }
 
 /**
+ * Cached roast payload.
+ *
+ * @typedef {{ insult: string, expiresAtMs: number }} InsultCacheEntry
+ */
+
+/**
+ * Build a deterministic cache key for an incoming request.
+ *
+ * @param {Request} request - Incoming request for the insult endpoint.
+ * @returns {string} Cache key for this request shape.
+ */
+export function makeCacheKey(request) {
+  const url = new URL(request.url);
+  return `${request.method}:${url.pathname}`;
+}
+
+/**
+ * Check whether a cache entry is still valid at the current time.
+ *
+ * @param {InsultCacheEntry | undefined} entry - Cache entry to validate.
+ * @param {number} nowMs - Current epoch time in milliseconds.
+ * @returns {boolean} True when the cache entry can still be used.
+ */
+export function isCacheEntryFresh(entry, nowMs) {
+  if (!entry) {
+    return false;
+  }
+
+  return (
+    typeof entry.insult === "string" &&
+    Number.isFinite(entry.expiresAtMs) &&
+    entry.expiresAtMs > nowMs
+  );
+}
+
+/**
+ * Read a cached insult and evict it when stale.
+ *
+ * @param {Map<string, InsultCacheEntry>} cache - In-memory roast cache.
+ * @param {string} key - Cache key from makeCacheKey.
+ * @param {number} nowMs - Current epoch time in milliseconds.
+ * @returns {string | null} Cached insult or null when not usable.
+ */
+export function readCachedInsult(cache, key, nowMs) {
+  const entry = cache.get(key);
+  if (!isCacheEntryFresh(entry, nowMs)) {
+    cache.delete(key);
+    return null;
+  }
+
+  return entry.insult;
+}
+
+/**
+ * Write an insult into the in-memory cache with a TTL.
+ *
+ * @param {Map<string, InsultCacheEntry>} cache - In-memory roast cache.
+ * @param {string} key - Cache key from makeCacheKey.
+ * @param {string} insult - Generated roast to cache.
+ * @param {number} nowMs - Current epoch time in milliseconds.
+ * @param {number} ttlMs - Time-to-live in milliseconds.
+ */
+export function writeCachedInsult(cache, key, insult, nowMs, ttlMs) {
+  cache.set(key, {
+    insult,
+    expiresAtMs: nowMs + ttlMs,
+  });
+}
+
+/**
  * Serverless function entry point. Netlify calls this for every request
  * to /.netlify/functions/insult.
  *
