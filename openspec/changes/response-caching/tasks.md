@@ -16,4 +16,4 @@
 
 ## 5. Verification
 
-- [ ] 5.1 Run `npm run test` and `npm run check` and fix issues before marking complete.
+- [x] 5.1 Run `npm run test` and `npm run check` and fix issues before marking complete.
