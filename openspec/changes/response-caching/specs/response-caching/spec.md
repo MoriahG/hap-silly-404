@@ -36,3 +36,25 @@ The handler MUST keep current fallback behavior for Groq failures and MUST NOT p
 
 - **WHEN** a cache miss occurs and Groq fails
 - **THEN** the handler returns fallback and a subsequent matching request still attempts Groq again
+
+## Tests:
+
+- **Scenario:** Origin check still blocks before cache
+  - **Function:** `handler(request)`
+  - **Returns:** `Response.status === 403`
+
+- **Scenario:** Missing API key still returns existing fallback path
+  - **Function:** `handler(request)`
+  - **Returns:** fallback JSON response from the missing-key branch
+
+- **Scenario:** Cache hit avoids a second Groq call
+  - **Function:** `readCachedInsult(cache, key, nowMs)` (through `handler`)
+  - **Returns:** cached insult value (non-null), and `handler` returns cached roast response
+
+- **Scenario:** Expired cache entry refreshes from Groq
+  - **Function:** `isCacheEntryFresh(entry, nowMs)` and `readCachedInsult(cache, key, nowMs)` (through `handler`)
+  - **Returns:** `false` from freshness check, `null` from cache read, then fresh response after Groq success
+
+- **Scenario:** Groq failure returns fallback without caching fallback text
+  - **Function:** `handler(request)`
+  - **Returns:** fallback response on failure; next matching request does not return cached fallback text

@@ -1,6 +1,6 @@
 ## 1. Red-first scenario tests
 
-- [ ] 1.1 Add failing Vitest `it()` blocks for all five BDD scenarios in `specs/response-caching/spec.md` (one scenario per `it()`).
+- [x] 1.1 Add failing Vitest `it()` blocks for all five BDD scenarios in `specs/response-caching/spec.md` (one scenario per `it()`).
 
 ## 2. Testable cache helper functions
 
